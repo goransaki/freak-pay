@@ -11,6 +11,8 @@ return [
         'class' => 'yii\rest\UrlRule',
         'controller' => [
             'v1/card',
+            'post/<id:\d+>' => 'post/view',
+            'order/<order_number:\w+>/pay/cc' => 'api/payCC'
         ]
     ],
     [
