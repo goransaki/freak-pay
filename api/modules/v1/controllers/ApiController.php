@@ -9,9 +9,14 @@
 namespace api\modules\v1\controllers;
 
 
+use common\models\User;
+
 class ApiController extends \api\components\ActiveController
 {
-    public function actionPayCC($orderNumber) {
+    public $modelClass = User::class;
+
+    public function actionPay($orderNumber)
+    {
         return ["order_number" => $orderNumber];
     }
 }

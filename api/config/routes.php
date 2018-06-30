@@ -9,10 +9,16 @@
 return [
     [
         'class' => 'yii\rest\UrlRule',
-        'controller' => [
-            'v1/card',
-            'post/<id:\d+>' => 'post/view',
-            'order/<order_number:\w+>/pay/cc' => 'api/payCC'
+        'controller' => ['v1/card'],
+    ],
+    [
+        'class' => 'yii\rest\UrlRule',
+        'controller' => ['v1/order'],
+        'tokens' => [
+            '{id}' => '<id:\\w+>',
+        ],
+        'extraPatterns' => [
+            'GET {id}/pay/cc' => 'card/index',
         ]
     ],
     [

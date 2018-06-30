@@ -7,7 +7,7 @@ use common\models\User;
  * Class CardController
  * @package api\modules\v1\controllers
  */
-class CardControlle extends \api\components\ActiveController
+class OrderController extends \api\components\ActiveController
 {
     public $modelClass = User::class;
 
@@ -18,5 +18,8 @@ class CardControlle extends \api\components\ActiveController
     {
         return ['1' => 'test'];
     }
-
+    public function actionPay()
+    {
+        return ['1' => 'test'];
+    }
 }
