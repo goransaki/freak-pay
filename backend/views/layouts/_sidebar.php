@@ -19,7 +19,7 @@ use yii\widgets\Menu;
         'items' => [
             [
                 'label' => SidebarHelper::getItem(Yii::t('app', 'Dashboard'), 'flaticon-line-graph'),
-                'url' => ['/dashboard'],
+                'url' => ['/'],
                 'linkOptions' => ['class' => 'm-menu__link m-menu__toggle'],
                 'active' => in_array(\Yii::$app->controller->id, ['dashboard']),
             ],
