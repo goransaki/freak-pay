@@ -6,6 +6,8 @@
  * Time: 16:39
  */
 
+namespace api\modules\v1\service;
+
 class UserServiceImpl implements UserService
 {
 

@@ -6,6 +6,8 @@
  * Time: 16:38
  */
 
+namespace api\modules\v1\service;
+
 class OrderServiceImpl implements OrderService
 {
 

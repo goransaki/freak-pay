@@ -6,6 +6,8 @@
  * Time: 16:34
  */
 
+namespace api\modules\v1\service;
+
 interface OrderService
 {
     public function payWithCreditCard($orderNumber, NewCreditCardPayment $newCreditCardPayment);

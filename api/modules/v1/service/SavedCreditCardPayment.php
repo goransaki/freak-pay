@@ -6,6 +6,8 @@
  * Time: 16:37
  */
 
+namespace api\modules\v1\service;
+
 class SavedCreditCardPayment
 {
 
