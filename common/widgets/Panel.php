@@ -31,7 +31,7 @@ class Panel extends Widget
         parent::init();
 
         if (empty($this->menuItems)) {
-            $this->menuItems = ChargebackMenuHelper::getDefaultItems();
+           // $this->menuItems = ChargebackMenuHelper::getDefaultItems();
         }
     }
 
