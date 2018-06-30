@@ -57,7 +57,7 @@ class OrderServiceImpl implements OrderService
             throw new NotFoundHttpException();
         }
 
-        return $this->extractOrderDetails($order);
+        return $order;
     }
 
     /**
