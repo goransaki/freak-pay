@@ -11,4 +11,16 @@ namespace api\modules\v1\service;
 class EWalletPayment
 {
 
+    /**
+     * @var array
+     */
+    var $data;
+
+    /**
+     * EWalletPayment constructor.
+     */
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
 }

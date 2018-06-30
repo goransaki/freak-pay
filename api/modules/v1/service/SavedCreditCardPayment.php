@@ -10,5 +10,13 @@ namespace api\modules\v1\service;
 
 class SavedCreditCardPayment
 {
+    var $data;
 
+    /**
+     * SavedCreditCardPayment constructor.
+     */
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
 }

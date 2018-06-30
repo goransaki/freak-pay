@@ -8,6 +8,9 @@
 
 namespace api\modules\v1\service;
 
+use common\models\Orders;
+use yii\web\NotFoundHttpException;
+
 class OrderServiceImpl implements OrderService
 {
 
@@ -26,13 +29,42 @@ class OrderServiceImpl implements OrderService
         // TODO: Implement payWithEwallet() method.
     }
 
-    public function getPendingOrder($orderNumber)
+    private function extractOrderDetails(Orders $order)
     {
-        // TODO: Implement getPendingOrder() method.
+        return [
+            'id' => $order->id
+        ];
     }
 
+    /**
+     * @param $orderNumber
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    public function getPendingOrder($orderNumber)
+    {
+        $order = Orders::findOne(['id' => $orderNumber, 'status' => Orders::STATUS_PENDING]);
+
+        if (empty($order)) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->extractOrderDetails($order);
+    }
+
+    /**
+     * @param $orderNumber
+     * @return array
+     * @throws NotFoundHttpException
+     */
     public function getCompletedOrder($orderNumber)
     {
-        // TODO: Implement getCompletedOrder() method.
+        $order = Orders::findOne(['id' => $orderNumber, 'status' => Orders::STATUS_COMPLETED]);
+
+        if (empty($order)) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->extractOrderDetails($order);
     }
 }
