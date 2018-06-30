@@ -433,3 +433,14 @@ div#currencies-grid-view {
     width: 100px;
     float: right;
 }
+
+.m-stack__item.m-stack__item--middle.m-brand__logo {
+    width: 80%;
+}
+
+a.m-brand__logo-wrapper {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+}

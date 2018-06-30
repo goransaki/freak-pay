@@ -1,4 +1,5 @@
 <?php
+
 namespace backend\controllers;
 
 use Yii;
@@ -13,7 +14,7 @@ use common\models\LoginForm;
 class SiteController extends Controller
 {
 
-    /*public function behaviors()
+  /*  public function behaviors()
     {
         return [
             'access' => [
@@ -67,7 +68,7 @@ class SiteController extends Controller
      * @return string
      */
     public function actionLogin()
-    {
+    {var_dump('asdasd');die;
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
