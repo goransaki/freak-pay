@@ -12,6 +12,7 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  * @property int $user_id
+ * @property string $nfc_tag
  *
  * @property User $user
  */
@@ -32,6 +33,7 @@ class Device extends \yii\db\ActiveRecord
     {
         return [
             [['nfc_data'], 'string'],
+            [['nfc_tag'], 'string'],
             [['created_at', 'updated_at', 'user_id'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['user_id'], 'integer'],

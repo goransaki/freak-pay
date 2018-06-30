@@ -12,6 +12,7 @@ use Yii;
  * @property string $token_id
  * @property string $created_at
  * @property string $updated_at
+ * @property string $nfc_tag
  *
  * @property User $user
  * @property SecureData $token
@@ -36,6 +37,7 @@ class Card extends \yii\db\ActiveRecord
             [['user_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['token_id'], 'string', 'max' => 36],
+            [['nfc_tag'], 'string', 'max' => 50],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['token_id'], 'exist', 'skipOnError' => true, 'targetClass' => SecureData::className(), 'targetAttribute' => ['token_id' => 'token']],
         ];
@@ -52,6 +54,7 @@ class Card extends \yii\db\ActiveRecord
             'token_id' => 'Token ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'nfc_tag' => 'NFC Tag'
         ];
     }
 

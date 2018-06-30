@@ -6,6 +6,8 @@
  * Time: 16:33
  */
 
+namespace api\modules\v1\service;
+
 interface EnrollmentService
 {
     /**
