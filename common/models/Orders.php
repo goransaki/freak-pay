@@ -62,11 +62,31 @@ class Orders extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return array
+     */
+    public function extraFields()
+    {
+        return [
+            'products' => function () {
+                return $this->getProducts()->all();
+            },
+        ];
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getOrderProducts()
     {
         return $this->hasMany(OrderProduct::className(), ['order_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProducts()
+    {
+        return $this->hasMany(Product::class, ['id' => 'product_id'])->via('orderProducts');
     }
 
     /**

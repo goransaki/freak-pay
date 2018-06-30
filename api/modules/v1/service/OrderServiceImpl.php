@@ -10,6 +10,7 @@ namespace api\modules\v1\service;
 
 use common\models\OrderProduct;
 use common\models\Orders;
+use common\models\OrdersSearch;
 use yii\web\NotFoundHttpException;
 
 class OrderServiceImpl implements OrderService
@@ -72,6 +73,6 @@ class OrderServiceImpl implements OrderService
             throw new NotFoundHttpException();
         }
 
-        return $this->extractOrderDetails($order);
+        return $order;
     }
 }
