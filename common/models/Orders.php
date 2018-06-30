@@ -20,6 +20,9 @@ use Yii;
  */
 class Orders extends \yii\db\ActiveRecord
 {
+    const STATUS_PENDING = 'pending';
+    const STATUS_COMPLETED = 'completed';
+
     /**
      * {@inheritdoc}
      */
