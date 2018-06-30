@@ -172,6 +172,12 @@ $this->title = 'Freak pay';
     </div>
     <div class="row">
         <br><br>
+        <div class="col-md-12">
+            <?= \yii\widgets\ListView::widget([
+                'dataProvider' => $transactionDataProvider,
+                'itemView' => 'partials/transaction_list',
+            ]);?>
+        </div>
     </div>
 <?php \common\widgets\Panel::end(); ?>
 <?php
