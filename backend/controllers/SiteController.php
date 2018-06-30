@@ -2,7 +2,9 @@
 
 namespace backend\controllers;
 
+use common\models\Transaction;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -33,7 +35,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Transaction::find()->all(),
+            'pagination' => [
+                'pageSize' => 5,
+            ],
+        ]);
+
         return $this->render('index');
+
     }
 
     /**

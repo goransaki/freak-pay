@@ -170,7 +170,9 @@ $this->title = 'Freak pay';
             ?>
         </div>
     </div>
-
+    <div class="row">
+        <br><br>
+    </div>
 <?php \common\widgets\Panel::end(); ?>
 <?php
 
