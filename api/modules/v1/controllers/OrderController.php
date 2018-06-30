@@ -35,7 +35,7 @@ class OrderController extends \api\components\ActiveController
      */
     public function actionPayCreditCard($orderNumber)
     {
-        return ['1' => 'test'];
+        return ['1' => $orderNumber];
     }
 
     /**
@@ -44,7 +44,7 @@ class OrderController extends \api\components\ActiveController
      */
     public function actionPayWithSavedCreditCard($orderNumber)
     {
-        return ['1' => 'test'];
+        return ['1' => $orderNumber];
     }
 
     /**
@@ -53,6 +53,6 @@ class OrderController extends \api\components\ActiveController
      */
     public function actionPayEwallet($orderNumber)
     {
-        return ['1' => 'test'];
+        return ['1' => $orderNumber];
     }
 }
