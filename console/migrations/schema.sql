@@ -1,9 +1,7 @@
--- we don't know how to generate schema freak_pay (class Schema) :(
-
 create table payment_method
 (
   id           int auto_increment
-  primary key,
+    primary key,
   identifier   varchar(500)            not null,
   type         varchar(30)             null,
   created_at   datetime                not null,
@@ -16,7 +14,7 @@ create table payment_method
 create table product
 (
   id    int auto_increment
-  primary key,
+    primary key,
   code  varchar(255) not null,
   name  varchar(255) not null,
   price int          not null
@@ -36,7 +34,7 @@ create table secure_data
 create table store
 (
   id         int auto_increment
-  primary key,
+    primary key,
   identifier varchar(255)  not null,
   name       varchar(255)  not null,
   latitude   varchar(20)   not null,
@@ -45,45 +43,36 @@ create table store
   created_at datetime      not null
 );
 
-create table `order`
+create table orders
 (
   id         int auto_increment
-primary key,
+    primary key,
   identifier varchar(255) not null,
   store_id   int          not null,
   created_at datetime     not null,
   updated_at datetime     not null,
   status     varchar(200) null,
-constraint order_store_id_fk
-foreign key (store_id) references store (id)
+  constraint order_store_id_fk
+  foreign key (store_id) references store (id)
 );
-
-create index order_store_id_fk
-  on `order` (store_id);
 
 create table order_product
 (
   id         int auto_increment
-  primary key,
+    primary key,
   order_id   int         null,
   product_id int         null,
   quantity   smallint(6) null,
   constraint order_product_order_id_fk
-  foreign key (order_id) references `order` (id),
+  foreign key (order_id) references orders (id),
   constraint order_product_product_id_fk
   foreign key (product_id) references product (id)
 );
 
-create index order_product_order_id_fk
-  on order_product (order_id);
-
-create index order_product_product_id_fk
-  on order_product (product_id);
-
 create table user
 (
   id                   int auto_increment
-  primary key,
+    primary key,
   username             varchar(255)             not null,
   auth_key             varchar(32)              not null,
   password_hash        varchar(255)             not null,
@@ -104,7 +93,7 @@ create table user
 create table bank_account
 (
   id         int auto_increment
-  primary key,
+    primary key,
   user_id    int         not null,
   token_id   varchar(36) not null,
   name       varchar(30) null,
@@ -116,16 +105,10 @@ create table bank_account
   foreign key (token_id) references secure_data (token)
 );
 
-create index bank_account_secure_data_token_fk
-  on bank_account (token_id);
-
-create index bank_account_user_id_fk
-  on bank_account (user_id);
-
 create table card
 (
   id         int auto_increment
-  primary key,
+    primary key,
   user_id    int         not null,
   token_id   varchar(36) not null,
   created_at datetime    not null,
@@ -136,16 +119,10 @@ create table card
   foreign key (token_id) references secure_data (token)
 );
 
-create index card_secure_data_token_fk
-  on card (token_id);
-
-create index card_user_id_fk
-  on card (user_id);
-
 create table crypto_currency
 (
   id         int auto_increment
-  primary key,
+    primary key,
   user_id    int         not null,
   token_id   varchar(36) not null,
   type       varchar(30) null,
@@ -157,16 +134,10 @@ create table crypto_currency
   foreign key (token_id) references secure_data (token)
 );
 
-create index crypto_currency_secure_data_token_fk
-  on crypto_currency (token_id);
-
-create index crypto_currency_user_id_fk
-  on crypto_currency (user_id);
-
 create table device
 (
   id         int auto_increment
-  primary key,
+    primary key,
   nfc_data   text     null,
   created_at datetime not null,
   updated_at datetime not null,
@@ -175,32 +146,20 @@ create table device
   foreign key (user_id) references user (id)
 );
 
-create index device_user_id_fk
-  on device (user_id);
-
 create table transaction
 (
   id                int auto_increment
-  primary key,
+    primary key,
   order_id          int      not null,
   user_id           int      null,
   created_at        datetime not null,
   updated_at        datetime not null,
   payment_method_id int      not null,
   constraint transaction_order_id_fk
-  foreign key (order_id) references `order` (id),
+  foreign key (order_id) references orders (id),
   constraint transaction_user_id_fk
   foreign key (user_id) references user (id),
   constraint transaction_payment_method_id_fk
   foreign key (payment_method_id) references payment_method (id)
 );
-
-create index transaction_order_id_fk
-  on transaction (order_id);
-
-create index transaction_payment_method_id_fk
-  on transaction (payment_method_id);
-
-create index transaction_user_id_fk
-  on transaction (user_id);
 
