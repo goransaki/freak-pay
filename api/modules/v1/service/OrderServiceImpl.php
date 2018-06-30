@@ -8,6 +8,7 @@
 
 namespace api\modules\v1\service;
 
+use common\models\OrderProduct;
 use common\models\Orders;
 use yii\web\NotFoundHttpException;
 
@@ -31,8 +32,14 @@ class OrderServiceImpl implements OrderService
 
     private function extractOrderDetails(Orders $order)
     {
+
+        ;
         return [
-            'id' => $order->id
+            'id' => $order->id,
+            'store' => $order->store->name,
+            'status' => $order->status,
+            'products' => OrderProduct::find()->where(['order_id' => $order->id])->
+            leftJoin('product', 'order_product.product_id=product.id')->all()
         ];
     }
 

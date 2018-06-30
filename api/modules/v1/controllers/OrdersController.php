@@ -7,7 +7,10 @@ use api\modules\v1\service\NewCreditCardPayment;
 use api\modules\v1\service\OrderService;
 use api\modules\v1\service\OrderServiceImpl;
 use api\modules\v1\service\SavedCreditCardPayment;
+use common\helpers\ArrayHelper;
+use common\models\Orders;
 use common\models\User;
+use yii\web\NotFoundHttpException;
 
 /**
  * Class CardController
