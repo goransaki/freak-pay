@@ -1,13 +1,22 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: User
+ * Date: 30.6.2018.
+ * Time: 13:03
+ */
 
 namespace api\modules\v1\controllers;
+
+
+use api\components\ActiveController;
 use common\models\User;
 
 /**
- * Class CardController
+ * Class UserController
  * @package api\modules\v1\controllers
  */
-class CardController extends \api\components\ActiveController
+class UserController extends ActiveController
 {
     public $modelClass = User::class;
 
@@ -17,16 +26,16 @@ class CardController extends \api\components\ActiveController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['index']);
+        unset($actions['view']);
         return $actions;
     }
 
     /**
+     * @param $id
      * @return array
      */
-    public function actionIndex()
+    public function actionView($id)
     {
-        return ['1' => 'test'];
+        return ['id' => $id];
     }
-
 }

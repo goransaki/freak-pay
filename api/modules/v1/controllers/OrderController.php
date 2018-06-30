@@ -1,6 +1,7 @@
 <?php
 
 namespace api\modules\v1\controllers;
+
 use common\models\User;
 
 /**
@@ -14,11 +15,43 @@ class OrderController extends \api\components\ActiveController
     /**
      * @return array
      */
-    public function actionIndex()
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => \yii\filters\VerbFilter::className(),
+                'actions' => [
+                    'pay-credit-card' => ['POST'],
+                    'pay-with-saved-credit-card' => ['POST'],
+                    'pay-ewallet' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * @param $orderNumber
+     * @return array
+     */
+    public function actionPayCreditCard($orderNumber)
     {
         return ['1' => 'test'];
     }
-    public function actionPay()
+
+    /**
+     * @param $orderNumber
+     * @return array
+     */
+    public function actionPayWithSavedCreditCard($orderNumber)
+    {
+        return ['1' => 'test'];
+    }
+
+    /**
+     * @param $orderNumber
+     * @return array
+     */
+    public function actionPayEwallet($orderNumber)
     {
         return ['1' => 'test'];
     }
