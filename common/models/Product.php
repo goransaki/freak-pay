@@ -5,22 +5,23 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "article".
+ * This is the model class for table "product".
  *
  * @property int $id
  * @property string $code
  * @property string $name
+ * @property int $price
  *
- * @property TransactionItem[] $transactionItems
+ * @property OrderProduct[] $orderProducts
  */
-class Article extends \yii\db\ActiveRecord
+class Product extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'article';
+        return 'product';
     }
 
     /**
@@ -29,7 +30,8 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code', 'name'], 'required'],
+            [['code', 'name', 'price'], 'required'],
+            [['price'], 'integer'],
             [['code', 'name'], 'string', 'max' => 255],
         ];
     }
@@ -43,14 +45,15 @@ class Article extends \yii\db\ActiveRecord
             'id' => 'ID',
             'code' => 'Code',
             'name' => 'Name',
+            'price' => 'Price',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTransactionItems()
+    public function getOrderProducts()
     {
-        return $this->hasMany(TransactionItem::className(), ['article_id' => 'id']);
+        return $this->hasMany(OrderProduct::className(), ['product_id' => 'id']);
     }
 }

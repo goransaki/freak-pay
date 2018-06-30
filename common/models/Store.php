@@ -10,9 +10,12 @@ use Yii;
  * @property int $id
  * @property string $identifier
  * @property string $name
+ * @property string $latitude
+ * @property string $longitude
+ * @property string $address
+ * @property string $created_at
  *
- * @property Transaction[] $transactions
- * @property TransactionItem[] $transactionItems
+ * @property Orders[] $orders
  */
 class Store extends \yii\db\ActiveRecord
 {
@@ -30,8 +33,11 @@ class Store extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['identifier', 'name'], 'required'],
+            [['identifier', 'name', 'latitude', 'longitude', 'address', 'created_at'], 'required'],
+            [['created_at'], 'safe'],
             [['identifier', 'name'], 'string', 'max' => 255],
+            [['latitude', 'longitude'], 'string', 'max' => 20],
+            [['address'], 'string', 'max' => 2000],
         ];
     }
 
@@ -44,22 +50,18 @@ class Store extends \yii\db\ActiveRecord
             'id' => 'ID',
             'identifier' => 'Identifier',
             'name' => 'Name',
+            'latitude' => 'Latitude',
+            'longitude' => 'Longitude',
+            'address' => 'Address',
+            'created_at' => 'Created At',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTransactions()
+    public function getOrders()
     {
-        return $this->hasMany(Transaction::className(), ['store_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTransactionItems()
-    {
-        return $this->hasMany(TransactionItem::className(), ['store_id' => 'id']);
+        return $this->hasMany(Orders::className(), ['store_id' => 'id']);
     }
 }

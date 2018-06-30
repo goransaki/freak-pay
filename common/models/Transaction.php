@@ -8,18 +8,15 @@ use Yii;
  * This is the model class for table "transaction".
  *
  * @property int $id
- * @property string $reference
- * @property int $store_id
+ * @property int $order_id
  * @property int $user_id
- * @property double $total_price
- * @property int $used_points
- * @property int $got_points
  * @property string $created_at
  * @property string $updated_at
+ * @property int $payment_method_id
  *
- * @property Store $store
+ * @property Orders $order
  * @property User $user
- * @property TransactionItem[] $transactionItems
+ * @property PaymentMethod $paymentMethod
  */
 class Transaction extends \yii\db\ActiveRecord
 {
@@ -37,13 +34,12 @@ class Transaction extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['reference', 'created_at', 'updated_at'], 'required'],
-            [['store_id', 'user_id', 'used_points', 'got_points'], 'integer'],
-            [['total_price'], 'number'],
+            [['order_id', 'created_at', 'updated_at', 'payment_method_id'], 'required'],
+            [['order_id', 'user_id', 'payment_method_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['reference'], 'string', 'max' => 255],
-            [['store_id'], 'exist', 'skipOnError' => true, 'targetClass' => Store::className(), 'targetAttribute' => ['store_id' => 'id']],
+            [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Orders::className(), 'targetAttribute' => ['order_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['payment_method_id'], 'exist', 'skipOnError' => true, 'targetClass' => PaymentMethod::className(), 'targetAttribute' => ['payment_method_id' => 'id']],
         ];
     }
 
@@ -54,23 +50,20 @@ class Transaction extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'reference' => 'Reference',
-            'store_id' => 'Store ID',
+            'order_id' => 'Order ID',
             'user_id' => 'User ID',
-            'total_price' => 'Total Price',
-            'used_points' => 'Used Points',
-            'got_points' => 'Got Points',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'payment_method_id' => 'Payment Method ID',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getStore()
+    public function getOrder()
     {
-        return $this->hasOne(Store::className(), ['id' => 'store_id']);
+        return $this->hasOne(Orders::className(), ['id' => 'order_id']);
     }
 
     /**
@@ -84,8 +77,8 @@ class Transaction extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTransactionItems()
+    public function getPaymentMethod()
     {
-        return $this->hasMany(TransactionItem::className(), ['transaction_id' => 'id']);
+        return $this->hasOne(PaymentMethod::className(), ['id' => 'payment_method_id']);
     }
 }
