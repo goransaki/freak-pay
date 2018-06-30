@@ -10,7 +10,7 @@ return [
     [
         'class' => 'yii\rest\UrlRule',
         'controller' => [
-            'v1/note',
+            'v1/card',
         ]
     ],
     [
