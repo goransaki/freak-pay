@@ -31,19 +31,6 @@ class OrderServiceImpl implements OrderService
         // TODO: Implement payWithEwallet() method.
     }
 
-    private function extractOrderDetails(Orders $order)
-    {
-
-        ;
-        return [
-            'id' => $order->id,
-            'store' => $order->store->name,
-            'status' => $order->status,
-            'products' => OrderProduct::find()->where(['order_id' => $order->id])->
-            leftJoin('product', 'order_product.product_id=product.id')->all()
-        ];
-    }
-
     /**
      * @param $orderNumber
      * @return array
@@ -51,10 +38,10 @@ class OrderServiceImpl implements OrderService
      */
     public function getPendingOrder($orderNumber)
     {
-        $order = Orders::findOne(['id' => $orderNumber, 'status' => Orders::STATUS_PENDING]);
+        $order = Orders::findOne(['id' => $orderNumber]);
 
         if (empty($order)) {
-            throw new NotFoundHttpException();
+            throw new NotFoundHttpException("Order not found");
         }
 
         return $order;
@@ -67,10 +54,10 @@ class OrderServiceImpl implements OrderService
      */
     public function getCompletedOrder($orderNumber)
     {
-        $order = Orders::findOne(['id' => $orderNumber, 'status' => Orders::STATUS_COMPLETED]);
+        $order = Orders::findOne(['id' => $orderNumber]);
 
         if (empty($order)) {
-            throw new NotFoundHttpException();
+            throw new NotFoundHttpException("Order not found");
         }
 
         return $order;
