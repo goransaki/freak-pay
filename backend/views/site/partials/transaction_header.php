@@ -4,7 +4,7 @@
             <li class="nav-item m-tabs__item">
                 <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_tabs_12_1" role="tab">
                     <i class="flaticon-refresh"></i>
-                    Transaction
+                    Transaction - <?= $model->id ?>
                 </a>
             </li>
         </ul>

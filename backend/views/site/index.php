@@ -13,7 +13,10 @@ $this->title = 'Freak pay';
                         'type' => 'container'
                     ],
                     'title' => [
-                        'text' => 'Transactions 24h',
+                        'text' => 'Last 1h',
+                    ],
+                    'exporting' => [
+                        'enabled' => false
                     ],
                     'yAxis' => [
                         [ // Primary yAxis
@@ -35,25 +38,17 @@ $this->title = 'Freak pay';
                     ],
                     'xAxis' => [
                         'crosshair' => true,
-                        'categories' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        'categories' => ['-60m', '-50m', '-40m', '-30m', '-20m', '-10m'],
                     ],
                     'series' => [[
                         'name' => 'Transactions',
                         'type' => 'spline',
                         'yAxis' => 1,
-                        'data' => [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-                        'tooltip' => [
-                            //      'valueSuffix' => ' mm'
-                        ]
-
+                        'data' => [64, 21, 33, 71, 12, 5],
                     ], [
                         'name' => 'Earnings',
                         'type' => 'spline',
-                        'data' => [700.0, 600.9, 900.5, 500.5, 700.2, 800.5, 200.2, 260.5, 230.3, 180.3, 130.9, 900.6],
-                        'tooltip' => [
-                            //         'valueSuffix' => '°C'
-                        ]
+                        'data' => [700.0, 600.9, 900.5, 1100.5, 100.2, 60.5],
                     ]]
 
                 ]
@@ -67,13 +62,10 @@ $this->title = 'Freak pay';
                         'type' => 'container'
                     ],
                     'title' => [
-                        'text' => 'Transactions 24h',
+                        'text' => 'Last 8h',
                     ],
                     'yAxis' => [
                         [ // Primary yAxis
-                            'labels' => [
-                                //          'format' => '{value}°C',
-                            ],
                             'title' => [
                                 'text' => 'Transactions',
                             ]
@@ -89,14 +81,13 @@ $this->title = 'Freak pay';
                     ],
                     'xAxis' => [
                         'crosshair' => true,
-                        'categories' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        'categories' => ['-6h', '-5h', '-4h', '-3h', '-2h', '-1h'],
                     ],
                     'series' => [[
                         'name' => 'Transactions',
                         'type' => 'spline',
                         'yAxis' => 1,
-                        'data' => [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+                        'data' => [572, 216, 323, 450, 920, 115],
                         'tooltip' => [
                             //      'valueSuffix' => ' mm'
                         ]
@@ -104,11 +95,14 @@ $this->title = 'Freak pay';
                     ], [
                         'name' => 'Earnings',
                         'type' => 'spline',
-                        'data' => [700.0, 600.9, 900.5, 500.5, 700.2, 800.5, 200.2, 260.5, 230.3, 180.3, 130.9, 900.6],
+                        'data' => [6289, 2182, 8900, 9900,21000, 1100],
                         'tooltip' => [
                             //         'valueSuffix' => '°C'
                         ]
-                    ]]
+                    ]],
+                    'exporting' => [
+                        'enabled' => false
+                    ]
 
                 ]
             ]);
@@ -122,7 +116,10 @@ $this->title = 'Freak pay';
                         'type' => 'container'
                     ],
                     'title' => [
-                        'text' => 'Transactions 24h',
+                        'text' => 'Last 24h',
+                    ],
+                    'exporting' => [
+                        'enabled' => false
                     ],
                     'yAxis' => [
                         [ // Primary yAxis
@@ -144,14 +141,13 @@ $this->title = 'Freak pay';
                     ],
                     'xAxis' => [
                         'crosshair' => true,
-                        'categories' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        'categories' => ['-24h', '-20h', '-16h', '-12h', '-8h', '-4h'],
                     ],
                     'series' => [[
                         'name' => 'Transactions',
                         'type' => 'spline',
                         'yAxis' => 1,
-                        'data' => [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+                        'data' => [1300, 1900, 2300, 1000, 3400, 2500],
                         'tooltip' => [
                             //      'valueSuffix' => ' mm'
                         ],
@@ -159,7 +155,7 @@ $this->title = 'Freak pay';
                     ], [
                         'name' => 'Earnings',
                         'type' => 'spline',
-                        'data' => [700.0, 600.9, 900.5, 500.5, 700.2, 800.5, 200.2, 260.5, 230.3, 180.3, 130.9, 900.6],
+                        'data' => [11000, 19000, 25000, 10100, 30000, 19000],
                         'tooltip' => [
                             //         'valueSuffix' => '°C'
                         ]
@@ -217,7 +213,7 @@ function requestData() {
     });
 }
 
-requestData();
+//requestData();
 JSHIGHCHARTS;
 
 

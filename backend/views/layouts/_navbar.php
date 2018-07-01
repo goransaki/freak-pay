@@ -18,7 +18,7 @@ use yii\helpers\Url;
                 <div class="m-stack m-stack--ver m-stack--general">
                     <div class="m-stack__item m-stack__item--middle m-brand__logo">
                         <a class="m-brand__logo-wrapper" href="<?= Url::to(['/dashboard']) ?>">
-                            FREAK PAY
+                            FAST CHECKOUT
                         </a>
                     </div>
                     <div class="m-stack__item m-stack__item--middle m-brand__tools">
