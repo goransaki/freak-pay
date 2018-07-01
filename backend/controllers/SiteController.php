@@ -2,10 +2,10 @@
 
 namespace backend\controllers;
 
+use common\models\search\TransactionSearch;
+
 use Yii;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\LoginForm;
 
 /**
@@ -33,7 +33,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+
+        $searchModel = new TransactionSearch();
+
+        $transactionDataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'transactionDataProvider' => $transactionDataProvider,
+        ]);
     }
 
     /**

@@ -11,4 +11,15 @@ namespace api\modules\v1\service;
 class NewCreditCardPayment
 {
 
+
+    var $data;
+
+    /**
+     * NewCreditCardPayment constructor.
+     * @param $data
+     */
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
 }
