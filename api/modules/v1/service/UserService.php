@@ -12,4 +12,5 @@ interface UserService
 {
     function getEnrolledUser($id);
 
+    function getPaymentMethods($id);
 }

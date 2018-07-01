@@ -68,10 +68,15 @@ class Orders extends \yii\db\ActiveRecord
     {
         return [
             'products' => function () {
-                return $this->getProducts()->all();
-            },
-            'order_products' => function () {
-                return $this->getOrderProducts()->all();
+                $orders = $this->getOrderProducts()->all();
+                $response = [];
+                foreach ($orders as $order) {
+                    $tmp = $order->toArray();
+                    $tmp["name"] = $order->product->name;
+                    $tmp["price"] = $order->product->price;
+                    $response[] = $tmp;
+                }
+                return $response;
             },
             'store' => function () {
                 return $this->getStore()->one();

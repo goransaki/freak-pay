@@ -8,6 +8,7 @@
 
 namespace api\modules\v1\service;
 
+use common\models\PaymentMethod;
 use common\models\User;
 use yii\web\HttpException;
 
@@ -32,5 +33,15 @@ class UserServiceImpl implements UserService
         }
 
         // TODO: Implement getEnrolledUser() method.
+    }
+
+    function getPaymentMethods($id)
+    {
+        PaymentMethod::find()
+            ->where(['user_id' => $id])
+            ->orderBy('sort_key')
+
+        ;
+        // TODO: Implement getPaymentMethods() method.
     }
 }

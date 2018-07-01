@@ -8,9 +8,7 @@
 
 namespace api\modules\v1\service;
 
-use common\models\OrderProduct;
 use common\models\Orders;
-use common\models\OrdersSearch;
 use yii\web\NotFoundHttpException;
 
 class OrderServiceImpl implements OrderService
@@ -19,6 +17,7 @@ class OrderServiceImpl implements OrderService
     public function payWithCreditCard($orderNumber, NewCreditCardPayment $newCreditCardPayment)
     {
         // TODO: Implement payWithCreditCard() method.
+        return ['success' => true];
     }
 
     public function payWithSavedCreditCard($orderNumber, SavedCreditCardPayment $savedCreditCardPayment)
