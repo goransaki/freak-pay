@@ -5,7 +5,10 @@
             <br>
             <span><strong>Order: </strong></span><?= \common\helpers\ArrayHelper::getValue($model->getUser()->one(), 'first_name') . ' ' . \common\helpers\ArrayHelper::getValue($model->getUser()->one(), 'last_name') ?>
             <br>
-            <span><strong>Order: </strong></span><?= \common\helpers\ArrayHelper::getValue($model->getPaymentMethod()->one(), 'type') ?>
+            <span><strong>Payment method: </strong></span><?= \common\helpers\ArrayHelper::getValue($model->getPaymentMethod()->one(), 'type') ?>
+            <br>
+            <strong> <span>Amount: </span><?= \common\helpers\OrderHelper::getAmount($model->getOrder()->one()); ?>
+            </strong>
             <br>
         </div>
     </div>
