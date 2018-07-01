@@ -71,20 +71,32 @@ $orderProducts = !empty($order) ? $order->getOrderProducts()->all() : [];
 
 <script>
     function myMap() {
-        var myLatLng = {lat: 44.7909543, lng: 20.4796067};
 
-        var map = new google.maps.Map(document.getElementById('googleMap<?=$model->id?>'), {
-            zoom: 4,
-            center: myLatLng
+        var myLatLng1 = {lat: 44.8116601, lng: 20.4639214};
+
+        var map1 = new google.maps.Map(document.getElementById('googleMap1'), {
+            zoom: 20,
+            center: myLatLng1
         });
 
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
+        var marker1 = new google.maps.Marker({
+            position: myLatLng1,
+            map: map1,
             title: 'Store'
         });
 
+        var myLatLng2 = {lat: 44.8104049, lng: 20.4677224};
 
+        var map2 = new google.maps.Map(document.getElementById('googleMap2'), {
+            zoom: 20,
+            center: myLatLng2
+        });
+
+        var marker2 = new google.maps.Marker({
+            position: myLatLng2,
+            map: map2,
+            title: 'Store'
+        });
     }
 </script>
 
