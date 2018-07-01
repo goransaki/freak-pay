@@ -70,6 +70,12 @@ class Orders extends \yii\db\ActiveRecord
             'products' => function () {
                 return $this->getProducts()->all();
             },
+            'order_products' => function () {
+                return $this->getOrderProducts()->all();
+            },
+            'store' => function () {
+                return $this->getStore()->one();
+            },
         ];
     }
 
